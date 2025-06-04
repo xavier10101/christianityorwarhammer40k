@@ -12,9 +12,9 @@
     "url": "https://github.com/pixelastic/pokemonorbigdata/issues"
   },
   "scripts": {
-    "build": "./scripts/build",
-    "deploy": "./scripts/deploy",
-    "serve": "./scripts/serve"
+    "build": ".\\scripts\\build.cmd",
+    "deploy": ".\\scripts\\deploy.cmd",
+    "serve": ".\\scripts\\serve.cmd"
   },
   "devDependencies": {
     "gh-pages": "2.0.1",

@@ -1,6 +1,7 @@
 'use strict';
 
 var APP_STATES = {
+  SPLASH: 0,
   LOADING: 1,
   FROM_TWITTER: 2,
   QUESTION: 3,
@@ -8,22 +9,18 @@ var APP_STATES = {
   FINISHED: 5
 };
 
-var IS_POKEMON=0;
-var IS_BIGDATA=1;
+var IS_CHRISTIANITY=0;
+var IS_WH40K=1;
 
 var App = React.createClass({displayName: "App",
   getInitialState: function() {
-    // Check if coming from Twitter
-    const isFromTwitter = (document.referrer === "https://t.co/");
-
     // Load question data from the server
     var self = this;
     $.get('./questions.json', function(questions) {
       questions = _.shuffle(questions);
-      const initialCurrentState = isFromTwitter ? 
-        APP_STATES.FROM_TWITTER : APP_STATES.QUESTION;
+      // Always start with splash screen now
       self.setState({
-        currentState: initialCurrentState,
+        currentState: APP_STATES.SPLASH,
         questionList: questions,
         currentQuestion: questions[0]
       });
@@ -82,8 +79,10 @@ var App = React.createClass({displayName: "App",
     switch (this.state.currentState) {
       case APP_STATES.LOADING:
         return React.createElement(SplashScreen, null)
-      case APP_STATES.FROM_TWITTER:
-        return React.createElement(FromTwitter, {question: this.state.currentQuestion, startGame: this.startGame})
+      case APP_STATES.SPLASH:
+        return React.createElement(SplashScreen, {onStart: this.startGame})
+      // case APP_STATES.FROM_TWITTER:
+      //   return React.createElement(FromTwitter, {question: this.state.currentQuestion, startGame: this.startGame})
       case APP_STATES.QUESTION:
         return React.createElement(Question, {selectAnswer: this.selectAnswer, question: this.state.currentQuestion})
       case APP_STATES.ANSWER:

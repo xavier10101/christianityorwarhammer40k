@@ -1,6 +1,6 @@
-# Pokémon or Big Data
+# Christianity or Warhammer 40K
 
-Is this a Pokémon or some kind of Big Data technology ?
+Is this from Christianity or Warhammer 40K?
 
 ## Why?
 

@@ -11,7 +11,7 @@ var Answer = React.createClass({displayName: "Answer",
     var name = this.props.question.name;
     var url = this.props.question.url;
     var text = this.props.question.text;
-    var type = this.props.question.type === IS_BIGDATA ? 'Big Data' : 'Pokémon';
+    var type = this.props.question.type === IS_WH40K ? 'Warhammer 40K' : 'Christianity';
 
     return (
       React.createElement("div", {className: classes}, 
